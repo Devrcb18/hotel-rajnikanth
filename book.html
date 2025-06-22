@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Booking Seat</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #7a0000, #220000);
+      color: white;
+      text-align: center;
+    }
+
+    .title {
+      font-size: 48px;
+      font-weight: bold;
+      color: yellow;
+      margin-top: 20px;
+      font-family: 'Comic Sans MS', cursive;
+      animation: pulse 1.5s infinite alternate;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1.4); box-shadow: 0 0 12px chocolate; }
+      100% { transform: scale(1.05); box-shadow: 0 0 20px gold; }
+    }
+
+    nav {
+      margin: 80px auto;
+      width: 80%;
+      max-width: 1391px;
+      height: 54px;
+      background-color: #220000;
+      gap: 28px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    nav button {
+      padding: 10px 20px;
+      margin: 10px;
+      background: purple;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    nav button:hover {
+      transform: scale(1.1);
+    }
+
+    .food-image {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      text-align: center;
+    }
+
+    .food-image img {
+      width: 150px;
+      height: 100px;
+      border-radius: 50%;
+      border: 2px dashed hsl(68, 100%, 50%);
+      background: #cdff18;
+    }
+
+    .layout {
+      background: #f5a6b1;
+      margin: 40px auto;
+      width: 80%;
+      max-width: 800px;
+      border-radius: 50px;
+      padding: 40px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 30px;
+      justify-items: center;
+    }
+
+    .table-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .table {
+      width: 100px;
+      height: 60px;
+      background-color: #8B4513;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-weight: bold;
+      font-size: 24px;
+      margin: 10px 0;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+
+    .seats {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .seat {
+      width: 23px;
+      height: 25px;
+      background-color: #1a7a1a; /* Default green for available */
+      margin: 2px;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .seat:hover {
+      transform: scale(1.1);
+    }
+
+    .seat.booked {
+      background-color: #d11d1d; /* Red for booked seats */
+      cursor: not-allowed;
+    }
+
+    .people-table {
+      width: 80%;
+      margin: 20px auto;
+      border-collapse: collapse;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .people-table th, .people-table td {
+      padding: 10px;
+      border: 1px solid white;
+    }
+
+    .people-table th {
+      background-color: rgba(139, 0, 0, 0.7);
+    }
+    .seat.green {
+       background-color: green;
+    }
+
+    .seat.red {
+       background-color: red;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="title">Booking Seat</div>
+
+  <nav>
+    <button id="new">★ HOME</button>
+    <button id="menu">★ Menu</button>
+    <button id="gallery">★ Gallery</button>
+    <button id="book">★ BOOK</button>
+    <button id="contact">★ Contact</button>
+  </nav>
+
+  <div class="food-image">
+    <img src="newstud.png" >
+  </div>
+
+  <div class="hero">
+    <table class="people-table">
+      <thead>
+        <tr>
+          <th>SNo.</th>
+          <th>Status</th>
+          <th>SeatID</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in seat2 %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td>{{ i.status }}</td>
+          <td>{{ i.seatid }}</td>
+        </tr>
+         {% endfor %}
+      </tbody>
+    </table>
+    <div class="layout">
+    <div class="table-container">
+      <div class="seats">
+       <div class="seat {% if seats.a1.status == 'empty' %}green{% else %}red{% endif %}">a1</div>
+
+        <div class="seat {% if seats.a2.status == 'empty' %}green{% else %}red{% endif %}">a2</div>
+      </div>
+      <div class="table">A</div>
+      <div class="seats">
+        <div class="seat {% if seats.a3.status == 'empty' %}green{% else %}red{% endif %}">a3</div>
+        <div class="seat {% if seats.a4.status == 'empty' %}green{% else %}red{% endif %}">a4</div>
+      </div>
+    </div>
+
+    <!-- Table B - 4 seats -->
+    <div class="table-container">
+      <div class="seats">
+       <div class="seat {% if seats.b1.status == 'empty' %}green{% else %}red{% endif %}">b1</div>
+        <div class="seat {% if seats.b2.status == 'empty' %}green{% else %}red{% endif %}">b2</div>
+      </div>
+      <div class="table">B</div>
+      <div class="seats">
+       <div class="seat {% if seats.b3.status == 'empty' %}green{% else %}red{% endif %}">b3</div>
+        <div class="seat {% if seats.b4.status == 'empty' %}green{% else %}red{% endif %}">b4</div>
+      </div>
+    </div>
+
+    <!-- Table C - 2 seats -->
+    <div class="table-container">
+      <div class="seats">
+       <div class="seat {% if seats.c1.status == 'empty' %}green{% else %}red{% endif %}">c1</div>
+        <div class="seat {% if seats.c1.status == 'empty' %}green{% else %}red{% endif %}">c2</div>
+      </div>
+      <div class="table">C</div>
+    </div>
+
+    <!-- Table D - 4 seats -->
+    <div class="table-container">
+      <div class="seats">
+        <div class="seat {% if seats.d1.status == 'empty' %}green{% else %}red{% endif %}">d1</div>
+        <div class="seat {% if seats.d2.status == 'empty' %}green{% else %}red{% endif %}">d2</div>
+      </div>
+      <div class="table">D</div>
+      <div class="seats">
+       <div class="seat {% if seats.d3.status == 'empty' %}green{% else %}red{% endif %}">d3</div>
+        <div class="seat {% if seats.d4.status == 'empty' %}green{% else %}red{% endif %}">d4</div>
+      </div>
+    </div>
+
+    <!-- Table E - 4 seats -->
+    <div class="table-container">
+      <div class="seats">
+        <div class="seat {% if seats.e1.status == 'empty' %}green{% else %}red{% endif %}">e1</div>
+        <div class="seat {% if seats.e2.status == 'empty' %}green{% else %}red{% endif %}">e2</div>
+      </div>
+      <div class="table">E</div>
+      <div class="seats">
+       <div class="seat {% if seats.e3.status == 'empty' %}green{% else %}red{% endif %}">e3</div>
+        <div class="seat {% if seats.e4.status == 'empty' %}green{% else %}red{% endif %}">e4</div>
+      </div>
+    </div>
+  </div>
+
+<script>
+document.getElementById('contact').addEventListener("click", function() {
+    alert("Contact: idlisarr@gmail.com");
+});
+
+document.getElementById("new").addEventListener("click", function () {
+  window.open("main.html", "_self");
+});
+
+document.getElementById("book").addEventListener("click", function () {
+  window.open("booking.html", "_self");
+});
+
+document.querySelectorAll('.seat').forEach(seat => {
+  seat.addEventListener('click', function() {
+    if (this.style.backgroundColor === 'red' || 
+        window.getComputedStyle(this).backgroundColor === 'rgb(255, 0, 0)') {
+      alert('This seat is already booked!');
+    }
+  });
+});
+</script>
+</body>
+</html>

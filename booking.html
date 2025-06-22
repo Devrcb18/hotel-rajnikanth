@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Superstar Seat Booking</title>
+    <style>
+        body {
+            background-color: black;
+            color: gold;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+            padding-top: 50px;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+        }
+        button {
+            background-color: crimson;
+            color: white;
+            cursor: pointer;
+        }
+        #message {
+            font-size: 24px;
+            margin-top: 20px;
+            animation: flash 1s infinite alternate;
+        }
+        @keyframes flash {
+            from { color: gold; }
+            to { color: red; }
+        }
+    </style>
+</head>
+<body>
+    <h1>🎬 Rajinikanth Seat Booker 🎯</h1>
+   <form method="POST" action="{% url 'seat_booking' %}">
+  {% csrf_token %}
+  <input type="text" name="seatno" placeholder="Enter Seat ID">
+  <button type="submit">Book</button>
+</form>
+
+</body>
+</html>

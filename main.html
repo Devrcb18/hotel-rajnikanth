@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel RajniKant - Thalaivar's Kitchen</title>
+    <style>
+       
+        :root {
+            --rajni-red: #e63946;
+            --rajni-gold: #ffd700;
+            --rajni-dark: #1a1a2e;
+        }
+        
+        * { 
+           
+            transition: all 0.3s ease;
+        }
+        
+        body { 
+            font-family: 'Rowdies', cursive, sans-serif; 
+            line-height: 1.6; 
+            background-color: var(--rajni-dark); 
+            color: white;
+            background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        
+        header { 
+            background: linear-gradient(135deg, var(--rajni-red), var(--rajni-dark));
+            padding: 30px 0; 
+            text-align: center; 
+            color: var(--rajni-gold);
+            border-bottom: 5px solid var(--rajni-gold);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsMIopHsSJAUxnwToeXJ2NhUHCL3FI4gO9wg&s') center/cover no-repeat;
+            opacity: 0.15;
+            z-index: 0;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .rajni-logo {
+            width: 150px;
+            height: 150px;
+            border-radius: 20%;
+            border: 5px solid var(--rajni-gold);
+            box-shadow: 0 0 30px var(--rajni-gold);
+            margin: 0 auto 20px;
+            object-fit: cover;
+            animation: pulse 1s infinite alternate;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1.4); box-shadow: 0 0 20px var(--rajni-gold); }
+            100% { transform: scale(1.05); box-shadow: 0 0 40px var(--rajni-gold); }
+        }
+        
+        nav { 
+            background-color: var(--rajni-dark); 
+            display: flex;
+            justify-content: center;
+            border-bottom: 3px solid var(--rajni-gold);
+        }
+        
+        nav a { 
+            color: white; 
+            text-align: center; 
+            padding: 15px 25px; 
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+        }
+        
+        nav a:hover { 
+            background-color: var(--rajni-red);
+            color: var(--rajni-gold);
+        }
+        
+        nav a::after {
+            content: "★";
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            color: var(--rajni-gold);
+        }
+        
+        nav a:hover::after {
+            opacity: 1;
+        }
+        
+        .container { 
+            padding: 30px; 
+            max-width: 1200px; 
+            margin: 30px auto; 
+            background-color: rgba(26, 26, 46, 0.8);
+            border: 2px solid var(--rajni-gold);
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(230, 57, 70, 0.3);
+        }
+        
+        .hero { 
+            padding: 40px 20px; 
+            text-align: center; 
+            background: rgba(0,0,0,0.5);
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .hero h1 { 
+            font-size: 3.5em; 
+            margin-bottom: 20px; 
+            color: var(--rajni-gold);
+            text-shadow: 3px 3px 0 var(--rajni-red);
+        }
+        
+        .hero p { 
+            font-size: 1.5em; 
+            color: white;
+        }
+        
+        .rajni-quote {
+            font-style: italic;
+            color: var(--rajni-gold);
+            text-align: center;
+            margin: 20px 0;
+            font-size: 1.3em;
+        }
+        
+        .special-item {
+            background: rgba(230, 57, 70, 0.1);
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 5px solid var(--rajni-gold);
+        }
+        
+        .special-item h3 {
+            color: var(--rajni-gold);
+        }
+        
+        footer {
+            background: linear-gradient(to right, var(--rajni-dark), var(--rajni-red));
+            color: white; 
+            text-align: center; 
+            padding: 20px 0; 
+            margin-top: 40px;
+            font-size: 1.1em;
+            border-top: 3px solid var(--rajni-gold);
+        }
+        
+        footer p::before, footer p::after {
+            content: " ✨ ";
+        }
+        
+        @media (max-width: 768px) {
+            nav { flex-direction: column; }
+            .hero h1 { font-size: 2.5em; }
+            .rajni-logo { width: 120px; height: 120px; }
+        }
+        
+        /* Rajni Special Effects */
+        .rajni-effect {
+            animation: rajniPower 3s infinite;
+        }
+        
+        @keyframes rajniPower {
+            0% { text-shadow: 0 0 10px var(--rajni-gold); }
+            50% { text-shadow: 0 0 20px var(--rajni-red), 0 0 30px var(--rajni-gold); }
+            100% { text-shadow: 0 0 10px var(--rajni-gold); }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-content">
+        <img class='rajni-logo' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsMIopHsSJAUxnwToeXJ2NhUHCL3FI4gO9wg&s" alt="RajniKant">
+        <h1 class="rajni-effect">HOTEL RAJNIKANT FAMILY RESTRAUNT</h1>
+        <p>Where every dish is a blockbuster!</p>
+    </div>
+</header>
+
+<nav>
+    <a id="book">Book a Seat</a>
+    <a id="menu">Menu</a>
+    <a id="gallery">Gallery</a>
+    <a id="contact">Contact</a>
+</nav>
+
+<div class="container">
+    <div class="hero">
+        <h1>WELCOME TO THALAIVAR'S KITCHEN!</h1>
+        <p>Experience food that defies physics!</p>
+    </div>
+    
+    <p class="rajni-quote">"Ye Ana Rascala EAT IT!"</p>
+    
+    <div class="special-item">
+        <h3>★ Iyer Idli ★</h3>
+        <p>Try this - it will make you float in air!</p>
+    </div>
+    
+    <div class="special-item">
+        <h3>★ Style Dosa ★</h3>
+        <p>A dosa that flips itself before landing on your plate!</p>
+    </div>
+</div>
+
+<footer>
+    <p>© 2025 Hotel RajniKant - No ordinary mortal can replicate our taste!</p>
+</footer>
+<script>
+    document.getElementById(id='contact').addEventListener("change",function(){
+        window.alert("Contct: idlisarr@gmail.com")
+    });
+    document.getElementById("book").addEventListener("click", function () {
+     window.open('book.html', 'self');
+    });
+    
+    document.getElementById("gallery").addEventListener("click", function () {
+      window.open("gallery.html", "_self");
+    });
+    document.getElementById("menu").addEventListener("click", function () {
+      window.open("menu.html", "_self");
+    });
+</script>
+</body>
+</html>
